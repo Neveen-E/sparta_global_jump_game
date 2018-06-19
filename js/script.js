@@ -92,13 +92,17 @@ var floorValue = originalValue;
 
       for (var i = 0; i < ($(platform).length); i++) {
         var otherleft = parseInt($(platform[i]).css('left'));
+        console.log("right" + " " + myright);
+        console.log("OTHER right" + parseInt($(platform[0]).css('right')));
             var otherright = parseInt($(platform[i]).css('left')) + parseInt(($(platform[i]).css('width')));
             var otherwidth = parseInt($(platform[i]).css('width'));
             var othertop = parseInt($(platform[i]).css('top'));
             var otherbottom = parseInt($(platform[i]).css('top')) + parseInt(($(platform[i]).css('height')));
             var otherheight = parseInt($(platform[i]).css('height'));
+            var otherOTHERright = otherleft + (otherwidth - mywidth);
 
-        if (mytop <= othertop) {
+
+        if ((mytop <= othertop) && ((myleft >= otherleft) && (myleft <= otherOTHERright) )) {
           floorValue = othertop - myheight;
         }
         // else {

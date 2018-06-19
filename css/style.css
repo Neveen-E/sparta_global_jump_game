@@ -1,0 +1,51 @@
+body{
+  background-color: #B5838D;
+}
+.container{
+  background-color: #f3f3f3;
+  width: 750px;
+  height: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8%;
+}
+
+.character{
+  border-radius: 100%;
+  background-color: #FFBF69;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  left: 500px;
+  top: 510px;
+
+}
+.platform{
+  border-radius: 6%;
+  background-color: grey;
+  width: 170px;
+  height: 20px;
+  position: relative;
+}
+
+#platform1{
+  left: 100px;
+  bottom: -430px;
+}
+
+#platform2{
+  left: 200px;
+  bottom: -320px;
+}
+#platform3{
+  left: 300px;
+  bottom: -210px;
+}
+#platform4{
+  left: 400px;
+  bottom: -100px;
+}
+#platform5{
+  left: 500px;
+  bottom: 10px;
+}

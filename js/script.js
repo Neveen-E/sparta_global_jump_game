@@ -36,6 +36,7 @@ $(function() {
 
   var jumping = false;
   var moving = false;
+  var walkright = true;
 
   var originalValue = parseInt($(character).css('top'));
 
@@ -58,7 +59,8 @@ $(function() {
       if (event.which == 32 && jumping == false) {
         $(character).animate({
           top: '-=110'
-        })
+        });
+        $(character).removeClass('characteridle characteridleflip').addClass('characterjump');
 
         jumping = true;
 
@@ -70,10 +72,12 @@ $(function() {
         $(character).animate({
           left: '-=60'
         });
+        $(character).removeClass('characteridle').addClass('characterwalkflip');
         // console.log(rectangleL);
         // if ($(character).left >= rectangleL){
         //   $(character).left = rectangleL;
         // }
+        walkright = false;
         moving = true;
       }
 
@@ -81,7 +85,9 @@ $(function() {
         $(character).animate({
           left: '+=60'
         });
-
+        $(character).removeClass('characteridle').addClass('characterwalk');
+        //.css('background-image', 'url("../images/traveler/walk.gif")')
+        walkright = true;
         moving = true;
       }
     });
@@ -91,8 +97,15 @@ $(function() {
       $(character).animate({
         top: floorValue
       });
+
       jumping = false;
       moving = false;
+      if(moving == false &&  walkright == true){
+        $(character).removeClass('characterwalk characterwalkflip characteridleflip characterjump').addClass('characteridle');
+      }
+      else{
+        $(character).removeClass('characterwalk characterwalkflip characteridle characterjump').addClass('characteridleflip');
+      }
       $(character).clearQueue();
     });
 

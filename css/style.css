@@ -19,15 +19,32 @@ body{
 }
 
 .character{
-  background-image: url('../images/traveler/idle.gif');
-  /* background-color: #FFBF69; */
+
+  /* background-color: #FFBF69;
+  border-radius: 100%; */
   width: 64px;
   height: 64px;
   position: absolute;
   left: 500px;
   top: 485px;
-
-
+}
+.characteridle{
+  background-image: url('../images/traveler/idle.gif');
+  
+}
+.characteridleflip{
+  background-image: url('../images/traveler/idle.gif');
+  transform: scaleX(-1);
+}
+.characterwalk{
+  background-image: url('../images/traveler/walk.gif');
+}
+.characterwalkflip{
+  background-image: url('../images/traveler/walk.gif');
+  transform: scaleX(-1);
+}
+.characterjump{
+  background-image: url('../images/traveler/jump.gif');
 }
 .platform{
   border-radius: 6%;

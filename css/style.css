@@ -1,9 +1,9 @@
 body{
-  background-color: #B5838D;
+  background-color: #4C5B5C;
   font-family: sans-serif;
 }
 .container{
-  background-color: #f3f3f3;
+  background-color: #68C5DB;
   width: 750px;
   height: 550px;
   margin-left: auto;
@@ -30,7 +30,7 @@ body{
 }
 .characteridle{
   background-image: url('../images/traveler/idle.gif');
-  
+
 }
 .characteridleflip{
   background-image: url('../images/traveler/idle.gif');
@@ -47,16 +47,18 @@ body{
   background-image: url('../images/traveler/jump.gif');
 }
 .platform{
+  /* background-image: url('../images/tiles.png'); */
   border-radius: 6%;
-  background-color: grey;
+  background-color: #9BC53D;
   width: 170px;
-  height: 20px;
+  height: 25px;
   position: absolute;
 }
 
 #platform1{
   left: 100px;
   top: 480px;
+
 }
 
 #platform2{

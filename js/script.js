@@ -23,13 +23,13 @@ $(function() {
   //   platform[i]
   // }
 
-
+var reload = false;
   function init() { // start the game
     setInterval(gameLoop, skip);
   }
 
   init();
-  won();
+
 
 
   //variables for character movement
@@ -43,6 +43,7 @@ $(function() {
 
 
   function gameLoop() {
+    var game_won = false;
 
     var floorValue = originalValue;
     console.log(game_won);
@@ -103,7 +104,7 @@ $(function() {
       if(moving == false &&  walkright == true){
         $(character).removeClass('characterwalk characterwalkflip characteridleflip characterjump').addClass('characteridle');
       }
-      else{
+      else if(moving == false &&  walkright == false){
         $(character).removeClass('characterwalk characterwalkflip characteridle characterjump').addClass('characteridleflip');
       }
       $(character).clearQueue();
@@ -140,7 +141,6 @@ $(function() {
         // }
         if (floorValue == (parseInt($(platform[4]).css('top'))) - myheight) {
           game_won = true;
-          return;
         }
 
       }
@@ -149,17 +149,23 @@ $(function() {
     collide();
 
 
+
   };
 
   gameLoop();
+  won();
 
 //winning function
   function won() {
     if (game_won == true) {
 
       alert("YOU'VE WON!");
+      game_won = false;
+
     }
+
   }
+
 
 //counter function
   var counter = 0;

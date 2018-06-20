@@ -139,8 +139,10 @@ var reload = false;
         // else {
         //   floorValue = floorValue;
         // }
-        if (floorValue == (parseInt($(platform[4]).css('top'))) - myheight) {
+        if ((floorValue == (parseInt($(platform[4]).css('top'))) - myheight) && (jumping == false) && (moving == false)) {
           game_won = true;
+            won();
+
         }
 
       }
@@ -153,16 +155,18 @@ var reload = false;
   };
 
   gameLoop();
-  won();
+
 
 //winning function
   function won() {
-    if (game_won == true) {
+    // if (game_won == true) {
 
-      alert("YOU'VE WON!");
+      // alert("YOU'VE WON!");
       game_won = false;
-
-    }
+      $('.winningAlert').css('display', 'block');
+      clearInterval(init);
+      return;
+    // }
 
   }
 
@@ -182,6 +186,7 @@ var reload = false;
       alert("Time's up!");
       clearInterval(counterinterval);
     }
+    return;
 
   }
   var counterinterval = setInterval(countdown, 1000);

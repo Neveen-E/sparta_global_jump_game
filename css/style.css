@@ -1,14 +1,18 @@
 body{
-  background-color: #4C5B5C;
+  background-color: #C6D8D3;
   font-family: sans-serif;
+
 }
 .container{
+  background-image: url('../images/bg.png');
+  background-position: -10px;
   background-color: #68C5DB;
   width: 750px;
   height: 550px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 8%;
+    outline: 6px double #829191;
 
 }
 
@@ -83,3 +87,34 @@ body{
   padding-left: 84%;
   color: white;
 }
+.winningAlert {
+  width: 300px;
+  height: 300px;
+  background-color: yellow;
+  display: none;
+  margin: auto;
+  margin-left: 10%;
+  position: fixed;
+  z-index: 100px;
+}
+
+.timeAlert {
+  width: 300px;
+  height: 300px;
+  background-color: pink;
+  display: none;
+  margin: auto;
+  margin-left: 10%;
+  position: fixed;
+  z-index: 100px;
+}
+
+/* .btns {
+  width: 300px;
+  height: 300px;
+  background-color: pink;
+  margin: auto;
+  margin-left: 10%;
+  position: fixed;
+  z-index: 100px;
+} */

@@ -3,7 +3,7 @@ PSEUDO CODE
 1. All elements on screen. -- DONE
 2. Character to move left and right. -- DONE
 3. Character to jump. (gravity) -- DONE
-4. Collide with platforms.
+4. Collide with platforms. -- DONE
 5. Timer for game round.
 6. Border boundaries.
 7. Multiple keys work at the same time.

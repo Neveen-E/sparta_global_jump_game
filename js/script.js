@@ -39,13 +39,23 @@ $(function() {
 
   function gameLoop() {
 
-var floorValue = originalValue;
+    var floorValue = originalValue;
+
+//screen properties
+    var rectangle = $(gameScreen)[0].getBoundingClientRect();
+    var rectangleD = rectangle.x;
+    var rectangleU = rectangle.x + rectangle.height;
+    var rectangleL = rectangle.l;
+    var rectangleR = rectangle.l + rectangle.width;
+
+
 
     $(document).keypress(function(event) {
       if (event.which == 32 && jumping == false) {
         $(character).animate({
           top: '-=110'
         })
+      
         jumping = true;
 
       }
@@ -56,6 +66,10 @@ var floorValue = originalValue;
         $(character).animate({
           left: '-=60'
         });
+        // console.log(rectangleL);
+        // if ($(character).left >= rectangleL){
+        //   $(character).left = rectangleL;
+        // }
         moving = true;
       }
 
@@ -63,6 +77,7 @@ var floorValue = originalValue;
         $(character).animate({
           left: '+=60'
         });
+
         moving = true;
       }
     });
@@ -77,7 +92,7 @@ var floorValue = originalValue;
       $(character).clearQueue();
     });
 
-  function collide() {
+    function collide() {
       var myleft = parseInt($(character).css('left'));
       var myright = parseInt($(character).css('left')) + parseInt(($(character).css('width')));
       var mywidth = parseInt($(character).css('width'));
@@ -86,57 +101,55 @@ var floorValue = originalValue;
       var myheight = parseInt($(character).css('height'));
 
 
-    //   var xPos = myleft - (mywidth / 2);
-    //   var yPos = mytop - (myheight / 2);
-    //
+      //   var xPos = myleft - (mywidth / 2);
+      //   var yPos = mytop - (myheight / 2);
+      //
 
       for (var i = 0; i < ($(platform).length); i++) {
         var otherleft = parseInt($(platform[i]).css('left'));
-        console.log("right" + " " + myright);
-        console.log("OTHER right" + parseInt($(platform[0]).css('right')));
-            var otherright = parseInt($(platform[i]).css('left')) + parseInt(($(platform[i]).css('width')));
-            var otherwidth = parseInt($(platform[i]).css('width'));
-            var othertop = parseInt($(platform[i]).css('top'));
-            var otherbottom = parseInt($(platform[i]).css('top')) + parseInt(($(platform[i]).css('height')));
-            var otherheight = parseInt($(platform[i]).css('height'));
-            var otherOTHERright = otherleft + (otherwidth - mywidth);
+        var otherright = parseInt($(platform[i]).css('left')) + parseInt(($(platform[i]).css('width')));
+        var otherwidth = parseInt($(platform[i]).css('width'));
+        var othertop = parseInt($(platform[i]).css('top'));
+        var otherbottom = parseInt($(platform[i]).css('top')) + parseInt(($(platform[i]).css('height')));
+        var otherheight = parseInt($(platform[i]).css('height'));
+        var otherOTHERright = otherleft + (otherwidth - mywidth);
 
 
-        if ((mytop <= othertop) && ((myleft >= otherleft) && (myleft <= otherOTHERright) )) {
+        if ((mytop <= othertop) && ((myleft >= otherleft) && (myleft <= otherOTHERright))) {
           floorValue = othertop - myheight;
         }
         // else {
         //   floorValue = floorValue;
         // }
 
-    //     // var otherleft = parseInt($(platform[i]).css('left'));
-    //     // var otherright = parseInt($(platform[i]).css('left')) + parseInt(($(platform[i]).css('width')));
-    //     // var otherwidth = parseInt($(platform[i]).css('width'));
-    //     // var othertop = parseInt($(platform[i]).css('top'));
-    //     // var otherbottom = parseInt($(platform[i]).css('top')) + parseInt(($(platform[i]).css('height')));
-    //     // var otherheight = parseInt($(platform[i]).css('height'));
-    //     //
-    //     // var otherX = otherleft - (otherwidth/2);
-    //     // var otherY = othertop - (otherheight/2);
-    //     //
-    //     // if((mytop <= othertop) && ((myright < otherright)  && (myleft > otherleft))){
-    //     //   floorValue = othertop;
-    //     //   othertop = parseInt($(platform[i]).css('top'));
-    //     // }
-    //     // else{
-    //     //   floorValue = originalValue;
-    //     // }
+        //     // var otherleft = parseInt($(platform[i]).css('left'));
+        //     // var otherright = parseInt($(platform[i]).css('left')) + parseInt(($(platform[i]).css('width')));
+        //     // var otherwidth = parseInt($(platform[i]).css('width'));
+        //     // var othertop = parseInt($(platform[i]).css('top'));
+        //     // var otherbottom = parseInt($(platform[i]).css('top')) + parseInt(($(platform[i]).css('height')));
+        //     // var otherheight = parseInt($(platform[i]).css('height'));
+        //     //
+        //     // var otherX = otherleft - (otherwidth/2);
+        //     // var otherY = othertop - (otherheight/2);
+        //     //
+        //     // if((mytop <= othertop) && ((myright < otherright)  && (myleft > otherleft))){
+        //     //   floorValue = othertop;
+        //     //   othertop = parseInt($(platform[i]).css('top'));
+        //     // }
+        //     // else{
+        //     //   floorValue = originalValue;
+        //     // }
       }
 
 
 
-    //
-    //
-    //
-    //
+      //
+      //
+      //
+      //
     }
 
-  collide();
+    collide();
 
 
 

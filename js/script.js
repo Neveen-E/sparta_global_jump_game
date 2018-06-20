@@ -11,6 +11,9 @@ $(function() {
   var gameRunning = true;
   var fps = 25;
   var skip = 1000 / fps;
+  var game_won = false;
+
+
 
   // for (var i = 0; i < platform.length; i++) {
   //   var pX = $(character).css('left');
@@ -23,10 +26,10 @@ $(function() {
 
   function init() { // start the game
     setInterval(gameLoop, skip);
-
   }
 
   init();
+  won();
 
 
   //variables for character movement
@@ -37,11 +40,12 @@ $(function() {
   var originalValue = parseInt($(character).css('top'));
 
 
+
   function gameLoop() {
 
     var floorValue = originalValue;
-
-//screen properties
+    console.log(game_won);
+    //screen properties
     var rectangle = $(gameScreen)[0].getBoundingClientRect();
     var rectangleD = rectangle.x;
     var rectangleU = rectangle.x + rectangle.height;
@@ -55,7 +59,7 @@ $(function() {
         $(character).animate({
           top: '-=110'
         })
-      
+
         jumping = true;
 
       }
@@ -103,7 +107,7 @@ $(function() {
 
       //   var xPos = myleft - (mywidth / 2);
       //   var yPos = mytop - (myheight / 2);
-      //
+
 
       for (var i = 0; i < ($(platform).length); i++) {
         var otherleft = parseInt($(platform[i]).css('left'));
@@ -121,80 +125,47 @@ $(function() {
         // else {
         //   floorValue = floorValue;
         // }
+        if (floorValue == (parseInt($(platform[4]).css('top'))) - myheight) {
+          game_won = true;
+          return;
+        }
 
-        //     // var otherleft = parseInt($(platform[i]).css('left'));
-        //     // var otherright = parseInt($(platform[i]).css('left')) + parseInt(($(platform[i]).css('width')));
-        //     // var otherwidth = parseInt($(platform[i]).css('width'));
-        //     // var othertop = parseInt($(platform[i]).css('top'));
-        //     // var otherbottom = parseInt($(platform[i]).css('top')) + parseInt(($(platform[i]).css('height')));
-        //     // var otherheight = parseInt($(platform[i]).css('height'));
-        //     //
-        //     // var otherX = otherleft - (otherwidth/2);
-        //     // var otherY = othertop - (otherheight/2);
-        //     //
-        //     // if((mytop <= othertop) && ((myright < otherright)  && (myleft > otherleft))){
-        //     //   floorValue = othertop;
-        //     //   othertop = parseInt($(platform[i]).css('top'));
-        //     // }
-        //     // else{
-        //     //   floorValue = originalValue;
-        //     // }
       }
-
-
-
-      //
-      //
-      //
-      //
     }
 
     collide();
-
 
 
   };
 
   gameLoop();
 
+//winning function
+  function won() {
+    if (game_won == true) {
+
+      alert("YOU'VE WON!");
+    }
+  }
+
+//counter function
+  var counter = 0;
+  var timeleft = Math.floor(15);
+  var timer = $('#secondsleft').html();
+  $('#secondsleft').html('TIME LEFT : ' + (timeleft - counter));
+
+  function countdown() {
+    counter++;
+    $('#secondsleft').html('TIME LEFT : ' + (timeleft - counter));
+    if (counter == (timeleft +1 )) {
+      counter = 0;
+
+      alert("Time's up!");
+      clearInterval(counterinterval);
+    }
+
+  }
+  var counterinterval = setInterval(countdown, 1000);
+
 
 });
-
-
-
-
-//COLLIDE FUNCTION
-
-/*character[0].collides = function() {
-        var myleft = $(this).css('left');
-        var myright = $(this).css('left') + ($(this).css('width'));
-        var mytop = $(this).css('top');
-        var mybottom = $(this).css('top') + ($(this).css('height'));
-        var otherleft = $(platform).css('left');
-        var otherright = $(platform).css('left') + ($(platform).css('width'));
-        var othertop = $(platform).css('top');
-        var otherbottom = $(platform).css('top') + ($(platform).css('height'));
-        var crash = true;
-        if ((mybottom < othertop) ||
-               (mytop > otherbottom) ||
-               (myright < otherleft) ||
-               (myleft > otherright)) {
-           crash = false;
-        }
-
-        return crash;
-        console.log("hi");
-        // if(jumping == false){
-        //
-        // }
-    }
-
-    function hitt(){
-    if (character[0].collides($('#platform1'))){
-      console.log("platform[0].othertop");
-    }
-    else{
-      console.log("NO");
-
-    }
-  }*/

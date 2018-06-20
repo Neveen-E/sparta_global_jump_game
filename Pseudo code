@@ -5,13 +5,15 @@ PSEUDO CODE
 3. Character to jump. (gravity) -- DONE
 4. Collide with platforms. -- DONE
 5. Timer for game round.
-6. Border boundaries.
-7. Multiple keys work at the same time.
+6. obstacles
+7.
 8. win condition
-9.
-
-
--Add instructions
+9. leaderboard
+10. Add instructions
+11.Multiple keys work at the same time.
+12. Border boundaries.
+13. sound
+14. name game
 
 
 

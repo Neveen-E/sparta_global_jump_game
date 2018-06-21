@@ -115,7 +115,7 @@ background-image: url('../images/tiles.png');
 
 .timer {
   position: relative;
-  bottom: 30px;
+  bottom: -10px;
   padding-left: 84%;
   color: white;
 }
@@ -144,6 +144,13 @@ background-image: url('../images/tiles.png');
 
 button{
   width: 26%;
+}
+
+.logo{
+  position: absolute;
+  top: 10px;
+  left: auto;
+  padding-left: 8%;
 }
 
 /* .btns {

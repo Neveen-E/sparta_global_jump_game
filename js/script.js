@@ -23,7 +23,8 @@ $(function() {
   //   platform[i]
   // }
 
-var reload = false;
+  var reload = false;
+
   function init() { // start the game
     setInterval(gameLoop, skip);
   }
@@ -54,7 +55,7 @@ var reload = false;
     var rectangleL = rectangle.l;
     var rectangleR = rectangle.l + rectangle.width;
 
-
+    //character movement
 
     $(document).keypress(function(event) {
       if (event.which == 32 && jumping == false) {
@@ -69,20 +70,29 @@ var reload = false;
     });
 
     $(document).keydown(function(event) {
-      if (event.which == 37 && moving == false) {
+      if ((event.which == 38 || event.which == 87) && jumping == false) {
+        $(character).animate({
+          top: '-=110'
+        });
+        $(character).removeClass('characteridle characteridleflip').addClass('characterjump');
+
+        jumping = true;
+
+      }
+    });
+
+    $(document).keydown(function(event) {
+      if ((event.which == 37 || event.which == 65) && moving == false) {
         $(character).animate({
           left: '-=60'
         });
         $(character).removeClass('characteridle').addClass('characterwalkflip');
-        // console.log(rectangleL);
-        // if ($(character).left >= rectangleL){
-        //   $(character).left = rectangleL;
-        // }
+
         walkright = false;
         moving = true;
       }
 
-      if (event.which == 39 && moving == false) {
+      if ((event.which == 39 || event.which == 68) && moving == false) {
         $(character).animate({
           left: '+=60'
         });
@@ -101,10 +111,9 @@ var reload = false;
 
       jumping = false;
       moving = false;
-      if(moving == false &&  walkright == true){
+      if (moving == false && walkright == true) {
         $(character).removeClass('characterwalk characterwalkflip characteridleflip characterjump').addClass('characteridle');
-      }
-      else if(moving == false &&  walkright == false){
+      } else if (moving == false && walkright == false) {
         $(character).removeClass('characterwalk characterwalkflip characteridle characterjump').addClass('characteridleflip');
       }
       $(character).clearQueue();
@@ -141,7 +150,7 @@ var reload = false;
         // }
         if ((floorValue == (parseInt($(platform[4]).css('top'))) - myheight) && (jumping == false) && (moving == false)) {
           game_won = true;
-            won();
+          won();
 
         }
 
@@ -157,21 +166,21 @@ var reload = false;
   gameLoop();
 
 
-//winning function
+  //winning function
   function won() {
     // if (game_won == true) {
 
-      // alert("YOU'VE WON!");
-      game_won = false;
-      $('.winningAlert').css('display', 'block');
-      clearInterval(init);
-      return;
+    // alert("YOU'VE WON!");
+    game_won = false;
+    $('.winningAlert').css('display', 'block');
+    clearInterval(init);
+    return;
     // }
 
   }
 
 
-//counter function
+  //counter function
   var counter = 0;
   var timeleft = Math.floor(15);
   var timer = $('#secondsleft').html();
@@ -180,7 +189,7 @@ var reload = false;
   function countdown() {
     counter++;
     $('#secondsleft').html('TIME LEFT : ' + (timeleft - counter));
-    if (counter == (timeleft +1 )) {
+    if (counter == (timeleft + 1)) {
       counter = 0;
 
       alert("Time's up!");

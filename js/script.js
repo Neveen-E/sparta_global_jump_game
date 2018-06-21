@@ -32,7 +32,7 @@ $(function() {
     setInterval(gameLoop, skip);
   }
 
-  init();
+
 
 
 
@@ -158,69 +158,69 @@ $(function() {
           won();
 
         }
+      }
     }
-}
 
-function move() {
+    function move() {
 
-for (var i = 0; i < ($(platform).length); i++) {
-  var otherleft0 = parseInt($(platform[0]).css('left'));
-  var otherleft2 = parseInt($(platform[2]).css('left'));
-  var otherleft4 = parseInt($(platform[4]).css('left'));
+      for (var i = 0; i < ($(platform).length); i++) {
+        var otherleft0 = parseInt($(platform[0]).css('left'));
+        var otherleft2 = parseInt($(platform[2]).css('left'));
+        var otherleft4 = parseInt($(platform[4]).css('left'));
 
-  if(otherleft0 < 597 && rightpos == false){
-    $(platform[0]).css('left', '+=0.1')
-    if(otherleft0 == 596){
-      rightpos = true;
+        if (otherleft0 < 597 && rightpos == false) {
+          $(platform[0]).css('left', '+=0.1')
+          if (otherleft0 == 596) {
+            rightpos = true;
+          }
+        }
+
+        if (rightpos == true) {
+          $(platform[0]).css('left', '-=0.1')
+          if (otherleft0 <= 4) {
+            rightpos = false;
+          }
+        }
+
+        if (otherleft2 >= 4 && rightpos2 == false) {
+          $(platform[2]).css('left', '-=0.1')
+          if (otherleft2 == 4) {
+            rightpos2 = true;
+          }
+        }
+
+        if (rightpos2 == true) {
+          $(platform[2]).css('left', '+=0.1')
+          if (otherleft2 >= 596) {
+            rightpos2 = false;
+          }
+        }
+
+        if (otherleft4 < 597 && rightpos4 == false) {
+          $(platform[4]).css('left', '+=0.05')
+          if (otherleft4 == 596) {
+            rightpos4 = true;
+          }
+        }
+
+        if (rightpos4 == true) {
+          $(platform[4]).css('left', '-=0.05')
+          if (otherleft4 <= 4) {
+            rightpos4 = false;
+          }
+        }
+        // else if(otherleft < 4){
+        //     rightpos = true;
+        //     $(platform[0]).css('left', '+=0.5');
+        //
+        // }
+
+
+        // else if(otherright == 0){
+        //   console.log("STOP");
+        // }
+      }
     }
-  }
-
-  if(rightpos == true){
-    $(platform[0]).css('left', '-=0.1')
-    if(otherleft0 <=4){
-      rightpos = false;
-    }
-  }
-
-  if(otherleft2 >= 4 && rightpos2 == false){
-    $(platform[2]).css('left', '-=0.1')
-    if(otherleft2 == 4){
-      rightpos2 = true;
-    }
-  }
-
-  if(rightpos2 == true){
-    $(platform[2]).css('left', '+=0.1')
-    if(otherleft2 >=596){
-      rightpos2 = false;
-    }
-  }
-
-  if(otherleft4 < 597 && rightpos4 == false){
-    $(platform[4]).css('left', '+=0.05')
-    if(otherleft4 == 596){
-      rightpos4 = true;
-    }
-  }
-
-  if(rightpos4 == true){
-    $(platform[4]).css('left', '-=0.05')
-    if(otherleft4 <=4){
-      rightpos4 = false;
-    }
-  }
-  // else if(otherleft < 4){
-  //     rightpos = true;
-  //     $(platform[0]).css('left', '+=0.5');
-  //
-  // }
-
-
-  // else if(otherright == 0){
-  //   console.log("STOP");
-  // }
-  }
-  }
 
 
 
@@ -232,7 +232,7 @@ for (var i = 0; i < ($(platform).length); i++) {
 
   };
 
-  gameLoop();
+  // gameLoop();
 
 
   //winning function
@@ -256,6 +256,7 @@ for (var i = 0; i < ($(platform).length); i++) {
   $('#secondsleft').html('TIME LEFT : ' + (timeleft - counter));
 
   function countdown() {
+
     counter++;
     $('#secondsleft').html('TIME LEFT : ' + (timeleft - counter));
     if (counter == (timeleft + 1)) {
@@ -267,7 +268,17 @@ for (var i = 0; i < ($(platform).length); i++) {
     return;
 
   }
-  var counterinterval = setInterval(countdown, 1000);
 
+
+  //btns functions
+
+  function startgame() {
+    $('.btns').css('display', 'none');
+    $('.timer').css('display', 'block');
+    init();
+    var counterinterval = setInterval(countdown, 1000);
+  }
+
+  $('#startbtn').on('click', startgame);
 
 });

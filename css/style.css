@@ -54,16 +54,16 @@ body {
 }
 
 .platform {
-  /* background-image: url('../images/tiles.png'); */
+background-image: url('../images/tiles.png');
   border-radius: 6%;
-  background-color: #9BC53D;
-  width: 170px;
-  height: 25px;
+  /* background-color: #9BC53D; */
+  width: 150px;
+  height: 19px;
   position: absolute;
 }
 
 #platform1 {
-  left: 100px;
+  left: 380px;
   top: 480px;
 }
 
@@ -78,12 +78,38 @@ body {
 }
 
 #platform4 {
-  left: 400px;
+  left: 220px;
   top: 180px;
 }
 
 #platform5 {
-  left: 500px;
+  left: 330px;
+  top: 80px;
+}
+
+
+#platform6 {
+  left: 200px;
+  top: 480px;
+}
+
+#platform7 {
+  left: 300px;
+  top: 380px;
+}
+
+#platform8 {
+  left: 180px;
+  top: 280px;
+}
+
+#platform9 {
+  left: 220px;
+  top: 180px;
+}
+
+#platform10 {
+  left: 330px;
   top: 80px;
 }
 
@@ -97,7 +123,7 @@ body {
 .winningAlert {
   width: 300px;
   height: 300px;
-  background-color: yellow;
+  background-color: #C6D8D3;
   display: none;
   margin: auto;
   margin-left: 10%;
@@ -114,6 +140,10 @@ body {
   margin-left: 10%;
   position: fixed;
   z-index: 100px;
+}
+
+button{
+  width: 26%;
 }
 
 /* .btns {

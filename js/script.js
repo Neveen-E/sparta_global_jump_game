@@ -12,6 +12,9 @@ $(function() {
   var fps = 25;
   var skip = 1000 / fps;
   var game_won = false;
+  var rightpos = false;
+  var rightpos2 = false;
+  var rightpos4 = false;
 
 
 
@@ -47,7 +50,7 @@ $(function() {
     var game_won = false;
 
     var floorValue = originalValue;
-    console.log(game_won);
+
     //screen properties
     var rectangle = $(gameScreen)[0].getBoundingClientRect();
     var rectangleD = rectangle.x;
@@ -134,7 +137,9 @@ $(function() {
 
       for (var i = 0; i < ($(platform).length); i++) {
         var otherleft = parseInt($(platform[i]).css('left'));
+
         var otherright = parseInt($(platform[i]).css('left')) + parseInt(($(platform[i]).css('width')));
+
         var otherwidth = parseInt($(platform[i]).css('width'));
         var othertop = parseInt($(platform[i]).css('top'));
         var otherbottom = parseInt($(platform[i]).css('top')) + parseInt(($(platform[i]).css('height')));
@@ -153,12 +158,76 @@ $(function() {
           won();
 
         }
-
-      }
     }
+}
+
+function move() {
+
+for (var i = 0; i < ($(platform).length); i++) {
+  var otherleft0 = parseInt($(platform[0]).css('left'));
+  var otherleft2 = parseInt($(platform[2]).css('left'));
+  var otherleft4 = parseInt($(platform[4]).css('left'));
+
+  if(otherleft0 < 597 && rightpos == false){
+    $(platform[0]).css('left', '+=0.1')
+    if(otherleft0 == 596){
+      rightpos = true;
+    }
+  }
+
+  if(rightpos == true){
+    $(platform[0]).css('left', '-=0.1')
+    if(otherleft0 <=4){
+      rightpos = false;
+    }
+  }
+
+  if(otherleft2 >= 4 && rightpos2 == false){
+    $(platform[2]).css('left', '-=0.1')
+    if(otherleft2 == 4){
+      rightpos2 = true;
+    }
+  }
+
+  if(rightpos2 == true){
+    $(platform[2]).css('left', '+=0.1')
+    if(otherleft2 >=596){
+      rightpos2 = false;
+    }
+  }
+
+  if(otherleft4 < 597 && rightpos4 == false){
+    $(platform[4]).css('left', '+=0.05')
+    if(otherleft4 == 596){
+      rightpos4 = true;
+    }
+  }
+
+  if(rightpos4 == true){
+    $(platform[4]).css('left', '-=0.05')
+    if(otherleft4 <=4){
+      rightpos4 = false;
+    }
+  }
+  // else if(otherleft < 4){
+  //     rightpos = true;
+  //     $(platform[0]).css('left', '+=0.5');
+  //
+  // }
+
+
+  // else if(otherright == 0){
+  //   console.log("STOP");
+  // }
+  }
+  }
+
+
+
 
     collide();
 
+    setInterval(move, 1000);
 
 
   };

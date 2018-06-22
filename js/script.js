@@ -4,8 +4,11 @@ $(function() {
   var gameScreen = $('.container');
   var character = $('.character');
   var platform = $('.platform');
+  var audio = $('#bgmusic');
+  var jumpsfx = $('#jumpsfx');
+  $(audio).prop('volume', '0.03');
+  $(jumpsfx).prop('volume', '0.2');
 
-  console.log(platform);
 
   //variables for FPS and Game Speed
   var gameRunning = true;
@@ -72,11 +75,15 @@ $(function() {
           top: '-=110'
         });
         $(character).removeClass('characteridle characteridleflip').addClass('characterjump');
-
         jumping = true;
 
       }
     });
+
+    if(jumping == true){
+      $(jumpsfx).trigger('play');
+    }
+
 
     $(document).keydown(function(event) {
       if ((event.which == 38 || event.which == 87) && jumping == false) {
@@ -237,7 +244,7 @@ $(function() {
 
     collide();
 
-    setInterval(move, 1000);
+    var platformsmove = setInterval(move, 1000);
 
 
   };
@@ -250,8 +257,10 @@ $(function() {
     // if (game_won == true) {
 
     // alert("YOU'VE WON!");
-    game_won = false;
+    game_won = true
     $('.winningAlert').css('display', 'block');
+    clearInterval(counterinterval);
+
     return;
     // }
 

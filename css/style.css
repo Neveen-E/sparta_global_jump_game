@@ -86,7 +86,18 @@ body {
   left: 330px;
   top: 80px;
 }
-
+#finalplatform{
+  width: 750px;
+  height: 1px;
+  border-bottom: 2px solid #C6D8D3;
+  left: 0px;
+  top: 30px;
+}
+#chest{
+  position: relative;
+  bottom: 20px;
+  left: 30px;
+}
 
 .timer {
   position: relative;

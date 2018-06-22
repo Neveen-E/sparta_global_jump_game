@@ -6,11 +6,13 @@
   <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
-  <title>Jump!</title>
+  <title>Jungle Jump!</title>
+
 </head>
 
 <body>
-
+  <audio autoplay id="bgmusic"><source  src="audio/music.mp3" type="audio/mpeg"></audio>
+  <audio id="jumpsfx"><source  src="audio/jump.wav" type="audio/mpeg"></audio>
   <div class="container">
     <div class="logo">
       <img src="images/logo.png" alt="">
@@ -35,6 +37,10 @@
 
         </div>
         <div id="platform5" class="platform">
+          <img id="chest" src="images/obj_chest.png" alt="">
+
+        </div>
+        <div id="finalplatform">
 
         </div>
       </div>
@@ -68,7 +74,7 @@
         </div>
         <div class="timesup">
           <h1>TIME'S UP!</h1>
-            <button type="button" name="button" class="againbtn">TRY AGAIN</button>
+          <button type="button" name="button" class="againbtn">TRY AGAIN</button>
           </ul>
         </div>
       </div>

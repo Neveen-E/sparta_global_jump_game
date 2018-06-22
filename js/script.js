@@ -4,10 +4,11 @@ $(function() {
   var gameScreen = $('.container');
   var character = $('.character');
   var platform = $('.platform');
-  var audio = $('#bgmusic');
+  var audio = $('#backgroundmusic');
   var jumpsfx = $('#jumpsfx');
   $(audio).prop('volume', '0.03');
-  $(jumpsfx).prop('volume', '0.2');
+  $(jumpsfx).prop('volume', '0.6');
+  $(audio).trigger('play');
 
 
   //variables for FPS and Game Speed
@@ -259,6 +260,8 @@ $(function() {
     // alert("YOU'VE WON!");
     game_won = true
     $('.winningAlert').css('display', 'block');
+    $('.orangebg').css('display', 'block');
+      $('.wintext').html('You finished the game in ' + counter + ' seconds.');
     clearInterval(counterinterval);
 
     return;
@@ -295,11 +298,17 @@ $(function() {
 
   //btns functions
 
+
   function startgame() {
     $('.btns').css('display', 'none');
     $('.timer').css('display', 'block');
     $('.orangebg').css('display', 'none');
+    $('.instructions').css('display', 'none');
+    $('.timesup').css('display', 'none');
+    $('.winningAlert').css('display', 'none');
+    $('#bgmusic').trigger('play');
     init();
+    $(character).css('left', '500px').css('top','485px');
     counterinterval = setInterval(countdown, 1000);
   }
 

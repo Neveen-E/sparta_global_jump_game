@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <audio autoplay id="bgmusic"><source  src="audio/music.mp3" type="audio/mpeg"></audio>
+  <audio autoplay loop id="bgmusic"><source  src="audio/music.mp3" type="audio/mpeg"></audio>
   <audio id="jumpsfx"><source  src="audio/jump.wav" type="audio/mpeg"></audio>
   <div class="container">
     <div class="logo">
@@ -47,10 +47,7 @@
       <div class="character characteridle">
 
       </div>
-      <div class="winningAlert">
-        YOU WON!
-        <button type="button" name="button">PLAY AGAIN</button>
-      </div>
+
       <div class="timeAlert">
         TIME'S UP!
         <button type="button" name="button">TRY AGAIN</button>
@@ -76,6 +73,11 @@
           <h1>TIME'S UP!</h1>
           <button type="button" name="button" class="againbtn">TRY AGAIN</button>
           </ul>
+        </div>
+        <div class="winningAlert">
+          <h1>YOU WON!</h1>
+          <p class="wintext"> You finished the game in 15 seconds.</p>
+          <button type="button" name="button" class="againbtn">PLAY AGAIN</button>
         </div>
       </div>
     </div>

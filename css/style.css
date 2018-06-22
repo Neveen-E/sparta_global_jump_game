@@ -63,17 +63,17 @@ body {
 }
 
 #platform1 {
-  left: 380px;
+  left: 280px;
   top: 480px;
 }
 
 #platform2 {
-  left: 200px;
+  left: 440px;
   top: 380px;
 }
 
 #platform3 {
-  left: 300px;
+  left: 100px;
   top: 280px;
 }
 
@@ -87,30 +87,6 @@ body {
   top: 80px;
 }
 
-#platform6 {
-  left: 200px;
-  top: 480px;
-}
-
-#platform7 {
-  left: 300px;
-  top: 380px;
-}
-
-#platform8 {
-  left: 180px;
-  top: 280px;
-}
-
-#platform9 {
-  left: 220px;
-  top: 180px;
-}
-
-#platform10 {
-  left: 330px;
-  top: 80px;
-}
 
 .timer {
   position: relative;
@@ -142,10 +118,6 @@ body {
   z-index: 100px;
 }
 
-button {
-  width: 26%;
-}
-
 .logo {
   position: absolute;
   top: 32px;
@@ -153,28 +125,51 @@ button {
   padding-left: 10%;
 }
 
-.btns {
-  width: 400px;
-  height: 300px;
-  background-color: #F9A148;
+.orangebg {
+  width: 600px;
+  height: 400px;
+  background-color: rgb(249,161,72, 0.85);
   outline: 10px double #2E645E;
   outline-offset: -8px;
-  margin-top: 2%;
-  margin-left: 6%;
-  position: fixed;
+  position: absolute;
+  left: 10%;
+  top: 12%;
   z-index: 100px;
+
+}
+
+.btns{
   padding-left: 160px;
   padding-top: 100px;
 }
-
-.btns button{
+button{
   display: block;
   margin-bottom: 10%;
   width: 60%;
+  height: 40px;
   color: #2E645E;
   font-size: 18px;
-  height: 14%;
   background-color: white;
-  border-radius: 6%
+  border-radius: 15px;
 
+}
+
+.instructions, .timesup{
+  text-align: center;
+  color: white;
+  display: none;
+  width: 400px;
+  padding-left: 100px;
+  padding-top: 50px;
+  font-size: 20px;
+
+}
+.instructions button{
+margin-left: 13%;
+}
+.timesup{
+  margin-top: 10%;
+}
+.timesup button{
+  margin-left: 20%;
 }

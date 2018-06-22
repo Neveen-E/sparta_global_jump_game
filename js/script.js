@@ -15,21 +15,27 @@ $(function() {
   var rightpos = false;
   var rightpos2 = false;
   var rightpos4 = false;
+  var gamestart;
+  var pause = false;
 
-
-
-  // for (var i = 0; i < platform.length; i++) {
-  //   var pX = $(character).css('left');
-  //   var cY = $(character).css('top');
-  //   var cW = $(character).css('width');
-  //   var cH = $(character).css('height');
-  //   platform[i]
-  // }
 
   var reload = false;
 
-  function init() { // start the game
-    setInterval(gameLoop, skip);
+// start the game
+  function init() {
+    if(pause == false){
+      gamestart = setInterval(gameLoop, skip);
+    }
+
+    else if(pause == true){
+      clearInterval(gamestart);
+
+    }
+    return;
+  }
+
+  function stopgame(){
+    clearInterval(gamestart);
   }
 
 
@@ -168,19 +174,21 @@ $(function() {
         var otherleft2 = parseInt($(platform[2]).css('left'));
         var otherleft4 = parseInt($(platform[4]).css('left'));
 
-        if (otherleft0 < 597 && rightpos == false) {
-          $(platform[0]).css('left', '+=0.1')
-          if (otherleft0 == 596) {
+
+        if (otherleft0 >= 4 && rightpos == false) {
+          $(platform[0]).css('left', '-=0.1')
+          if (otherleft0 == 4) {
             rightpos = true;
           }
         }
 
         if (rightpos == true) {
-          $(platform[0]).css('left', '-=0.1')
-          if (otherleft0 <= 4) {
+          $(platform[0]).css('left', '+=0.1')
+          if (otherleft0 >= 596) {
             rightpos = false;
           }
         }
+
 
         if (otherleft2 >= 4 && rightpos2 == false) {
           $(platform[2]).css('left', '-=0.1')
@@ -195,6 +203,8 @@ $(function() {
             rightpos2 = false;
           }
         }
+
+
 
         if (otherleft4 < 597 && rightpos4 == false) {
           $(platform[4]).css('left', '+=0.05')
@@ -242,7 +252,6 @@ $(function() {
     // alert("YOU'VE WON!");
     game_won = false;
     $('.winningAlert').css('display', 'block');
-    clearInterval(init);
     return;
     // }
 
@@ -251,7 +260,10 @@ $(function() {
 
   //counter function
   var counter = 0;
-  var timeleft = Math.floor(15);
+  var counterinterval;
+
+
+  var timeleft = Math.floor(20);
   var timer = $('#secondsleft').html();
   $('#secondsleft').html('TIME LEFT : ' + (timeleft - counter));
 
@@ -259,11 +271,13 @@ $(function() {
 
     counter++;
     $('#secondsleft').html('TIME LEFT : ' + (timeleft - counter));
-    if (counter == (timeleft + 1)) {
+    if (counter == (timeleft)) {
       counter = 0;
 
-      alert("Time's up!");
+      $('.orangebg').css('display', 'block');
+      $('.timesup').css('display', 'block');
       clearInterval(counterinterval);
+      pause = true;
     }
     return;
 
@@ -275,10 +289,21 @@ $(function() {
   function startgame() {
     $('.btns').css('display', 'none');
     $('.timer').css('display', 'block');
+    $('.orangebg').css('display', 'none');
     init();
-    var counterinterval = setInterval(countdown, 1000);
+    counterinterval = setInterval(countdown, 1000);
   }
 
+  function instructions() {
+    $('.btns').css('display', 'none');
+    $('.instructions').css('display', 'block');
+
+  }
+
+  //calling bbtn functions
   $('#startbtn').on('click', startgame);
+  $('#playbtn').on('click', startgame);
+  $('.againbtn').on('click', startgame);
+  $('#instructionsbtn').on('click', instructions);
 
 });

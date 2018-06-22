@@ -5,9 +5,6 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="js/jquery.js"></script>
-
-  <!-- <script type="text/javascript" src="js/jquery.overlaps.js"></script>
-  <script type="text/javascript" src="js/overlaps.jquery.json"></script> -->
   <script type="text/javascript" src="js/script.js"></script>
   <title>Jump!</title>
 </head>
@@ -52,10 +49,28 @@
         TIME'S UP!
         <button type="button" name="button">TRY AGAIN</button>
       </div>
-      <div class="btns">
-        <button type="button" name="button" id="startbtn">START GAME</button>
-        <button type="button" name="button" id="instructionsbtn">INSTRUCTIONS</button>
-        <button type="button" name="button" id="leaderboard">LEADERBOARD</button>
+      <div class="orangebg">
+        <div class="btns">
+          <button type="button" name="button" id="startbtn">START GAME</button>
+          <button type="button" name="button" id="instructionsbtn">INSTRUCTIONS</button>
+          <button type="button" name="button" id="leaderboard">LEADERBOARD</button>
+        </div>
+        <div class="instructions">
+          <h1>INSTRUCTIONS</h1>
+          <ul>
+            <li>
+              <p>Use <b>W A S D</b> or the <b>arrow keys</b> to move the character.</p>
+            </li>
+            <li>Get to the <b>chest</b> before the time runs out.</li>
+            <br>
+            <button type="button" name="button" id="playbtn">PLAY</button>
+          </ul>
+        </div>
+        <div class="timesup">
+          <h1>TIME'S UP!</h1>
+            <button type="button" name="button" class="againbtn">TRY AGAIN</button>
+          </ul>
+        </div>
       </div>
     </div>
 
